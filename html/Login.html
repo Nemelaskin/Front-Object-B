@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Object_B</title>
+    <title>LoginScreen</title>
     <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/site.css" />
 </head>
@@ -44,18 +44,17 @@
     </div>
     <h1>Login</h1>
 
-<form action="Login" method="post" class="m-2">
-
+<form class="m-2">
     <div class="form-group">
-        <label for="2">Phone</label>
-        <input name="phone" type="tel" class="form-control" id="2" />
+        <label for="Email">Email</label>
+        <input name="Email" type="email" class="form-control" id="Email" />
     </div>
 
     <div class="form-group">
-        <label for="33">Password</label>
-        <input name="password" type="password" class="form-control" id="33" />
+        <label for="Password">Password</label>
+        <input name="Password" type="password" class="form-control" id="Password" />
     </div>
-    <input type="submit" value="Отправить" class="btn btn-primary" />
+    <input id="subPost"  value="Отправить" class="btn btn-primary" onclick="postAuth()"/>
 </form>
 
 
@@ -67,5 +66,6 @@
     <script src="../lib/jquery/dist/jquery.min.js"></script>
     <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/site.js" asp-append-version="true"></script>
+    <script src="../js/login.js" asp-append-version="true"></script>
 </body>
 </html>
