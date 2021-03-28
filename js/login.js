@@ -41,14 +41,6 @@ async function postAuth(){
       test = (await response.json()).access_token;
       
       console.log(test);
-      //console.log(dad);
-      
-    
-    
-      /*response(token => {
-        localStorage.setItem(ACCESS_TOKEN_KEY, token.access_token);
-    });*/
-
 }
 
 function authOkey(token){
