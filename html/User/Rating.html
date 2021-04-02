@@ -42,7 +42,28 @@
         <main role="main" class="pb-3">
         </main>
     </div>
-    <h1>Rating</h1>
+    <script src="../../js/forCookie.js" asp-append-version="true"></script>
+    <script src="~/js/RatingJS.js" defer></script>
+    
+    <style>
+        table td{
+            padding: 20px;
+            border: 11px solid black;
+        }
+    </style>
+<!--<table class="table table-sm table-striped table-bordered">
+    <tr>
+        <th>Rating</th>
+        <th>Name</th>
+        <th>SurName</th>
+        <th>Email</th>
+    </tr>
+</table>
+!-->
+
+
+<div id="elem"></div>
+
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2021 - Object_B - <a href="">Privacy</a>
@@ -50,6 +71,6 @@
     </footer>
     <script src="../../lib/jquery/dist/jquery.min.js"></script>
     <script src="../../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../js/site.js" asp-append-version="true"></script>
+    
 </body>
 </html>

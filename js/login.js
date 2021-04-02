@@ -1,28 +1,4 @@
-function setCookie(name, value, options = {}) {
-
-    options = {
-        path: '/',
-        ...options
-    };
-
-    if (options.expires instanceof Date) {
-        options.expires = options.expires.toUTCString();
-    }
-
-    let updatedCookie = name + "=" + value;
-
-    for (let optionKey in options) {
-        updatedCookie += "; " + optionKey;
-        let optionValue = options[optionKey];
-        if (optionValue !== true) {
-            updatedCookie += "=" + optionValue;
-        }
-    }
-
-    document.cookie = updatedCookie;
-}
-
-var test;
+deleteCookie("JWT");
 async function postAuth(){
     
     var data = {
@@ -38,12 +14,15 @@ async function postAuth(){
         },
         body: JSON.stringify(data)
       });
-      test = (await response.json()).access_token;
+      Key = (await response.json()).access_token;
       
-      console.log(test);
+      if(Key != null){
+        console.log(Key);
+        authOkey(Key);
+      }
 }
 
 function authOkey(token){
     setCookie('JWT', token, { 'max-age': 3600, samesite: 'strict' });
-    location.href = "../html/User/home.html";
+    document.location.href = "../html/User/home.html";
 }
