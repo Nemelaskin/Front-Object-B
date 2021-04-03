@@ -83,9 +83,20 @@ function newTestButt() {
 }
 
 
-let actualRoom = document.getElementById("actualRoom").innerHTML.split(':')[1];
-actualRoom = actualRoom.split('<')[0];
-actualRoom = Number(actualRoom);
+let allRooms;
+async function queryToGetRooms(allRooms){
+    response = await fetch('http://localhost:5000/api/Rooms', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+      });
+      allRooms = (await response.json());
+}
+
+
+//http://localhost:5000/api/Rooms
+
 
 postData(newRoom);
 
@@ -98,6 +109,7 @@ function postData(newRoom) {
         }).then(data => {
             countRooms(data);
             SelectRoom(data);
+            //console.log(data);
         });
 }
 
@@ -110,7 +122,7 @@ function SelectRoom(data) {
     }
     if (room != "") {
         room = room.split(" ");
-        //console.log(room);
+        console.log(room);
         if (STATUS == "develop") {
             var places = $('[ordered = 2]');
             for (var i = 0; i < places.length; i++) {
@@ -129,7 +141,8 @@ function SelectRoom(data) {
 
 
 function countRooms(data) {
-    var nowCompany = document.getElementById("CompanyNow").innerHTML.split('<')[0];
+    var nowCompany = document.getElementById("CompanyNow").innerText;
+    console.log("conmp: " + nowCompany);
     let allRooms = "";
     for (var i = 0; i < data.length; i++) {
         if (data[i]['Company']['NameCompany'] == nowCompany) {

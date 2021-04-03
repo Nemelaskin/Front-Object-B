@@ -1,36 +1,42 @@
 ﻿
+AddedTable();
 
-function createTable(){
+async function AddedTable(){
     response = await fetch('http://localhost:5000/api/RatingTable/index', {
-        method: 'POST',
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json;charset=utf-8'
         },
-        body: JSON.stringify(data)
       });
-      jsonTable = (await response.json());
+    jsonTable = (await response.json());
 
-      //table = document.getElementById('ratingTable').innerHTML = `<table class ="table table-sm table-striped table-bordered"></table>`;
-      
+    console.log(jsonTable);
+    
+    let elem = document.getElementById('testing');
+    CreateTable(elem, jsonTable);
       
 }
 
-let elem = document.querySelector('#elem');
-      
-testCreate(elem,3,3);
+function CreateTable(parent, json){
 
-function testCreate(parent,colms,rows){
-
-  let table = document.createElement('table');
-
-  for(let i = 0; i < rows; i++){
+  for(let i = 0; i < json.length; i++){
     let tr = document.createElement('tr');
 
-    for(let j = 0; j< colms; j++){
-      let td = document.createElement('td');
-      tr.appendChild(td);
-    }
-    table.appendChild(tr);
+      let td1 = document.createElement('td');
+      let td2 = document.createElement('td');
+      let td3 = document.createElement('td');
+      let td4 = document.createElement('td');
+
+      td1.innerText = json[i].position;
+      td2.innerText = json[i].name;
+      td3.innerText = json[i].surName;
+      td4.innerText = json[i].email;
+
+      tr.appendChild(td1);
+      tr.appendChild(td2);
+      tr.appendChild(td3);
+      tr.appendChild(td4);
+
+    parent.appendChild(tr);
   }
-  parent.appendChild(table);
 }
