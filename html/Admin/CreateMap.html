@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../../css/CMapStyle.css" />
+<link rel="stylesheet" type="text/css" href="../../css/DrawMapStyle.css" />
+<script src="../../js/forCookie.js" defer ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="../../js/CMapJS.js" defer></script>
+
+    <title>CreateMap</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="navbar">
+                <li class="dropdown">
+                    <a href="#" id="CompanyNow">test<i class="fas fa-angle-down"></i></a>
+                    <ul id = "choices">
+                    </ul>
+                </li>
+                <li><a asp-controller="MapComp" asp-action="Index">Maps</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="flxMain">
+        <div class="flx1">
+            <div id="wrapper">
+                <div id="content">
+                    <div id="places"></div>
+                </div>
+                <div id="sidebar"></div>
+            </div>
+        </div>
+
+        <div class="flx2">
+            <div class="SelectRoom">
+                <h2>Select Room to add coordinates:</h2>
+                <nav>
+                    <ul class="navbar">
+                        <li class="dropdown" style="flex: 1 1 auto">
+                            <a href="#" id="roomNow"><i class="fas fa-angle-down"></i></a>
+                            <ul id = "choices2">
+                            </ul>
+                        </li>
+                    </ul>
+                </nav></br></br></br>
+            </div>
+            <div class="test">
+                <button name="send" asp-controller="MapComp" asp-action="CreateMap" onclick="newTestButt()">Send!</button>
+            </div>
+            <div class="SaveMap">
+                <button name="status" asp-controller="MapComp" asp-action="CreateMap" onclick="statusFunc()">Mode</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

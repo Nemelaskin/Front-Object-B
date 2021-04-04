@@ -1,18 +1,22 @@
 ﻿function takeCookie(nameCookie){
     let cookie = document.cookie;
-    let massJTW;
-    let JWT = "";
+    let massCookie;
+    let result = "";
     massTemp = cookie.split(';');
     for(var i = 0; i < massTemp.length; i++){
-        massJTW = massTemp[i].split('=');
-        if(massJTW[0] == nameCookie && massJTW[1]!= ""){
-            JWT = massJTW[1];
+        massCookie = massTemp[i].split('=');
+        if((massCookie[0] == " "+nameCookie||massCookie[0] == nameCookie) && massCookie[1]!= ""){
+            result = massCookie[1];
         }
-        else{
-            console.log("failed take cookie");
-        }
+        
     }
-    console.log(JWT);
+    if(result){
+        return result;
+    }
+    else{
+        console.log("failed take cookie");
+        return "NotFound";
+    }
 }
 
 function deleteCookie(nameCookie){
