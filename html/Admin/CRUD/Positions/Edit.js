@@ -20,6 +20,7 @@ async function EditPosition() {
     response = await fetch('http://localhost:5000/api/Positions', {
         method: 'PUT',
         headers: {
+            "Authorization" : "Bearer "+ takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(data)
@@ -32,6 +33,7 @@ async function queryForTakePosition() {
     response = await fetch('http://localhost:5000/api/Positions/' + takeCookie("idPositionFor"), {
         method: 'GET',
         headers: {
+            "Authorization" : "Bearer "+ takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MapView</title>
+    <link rel="stylesheet" href="../../lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/CMapStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/DrawMapStyle.css" />
+    <script src="../../js/DrawMap.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" href="../User/home.html">Object_B</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="AdminMain.html">Main Admin</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="testingHide">
+        <ul class="navbar">
+            <li class="dropdown">
+                <a href="#" id="CompanyNow">TestCompany1<i class="fas fa-angle-down"></i></a>
+                <ul>
+                        <li><a href="">TestCompany1</a></li>
+                </ul>
+            </li>
+            <li><a asp-controller="MapComp" asp-action="Index">Maps</a></li>
+        </ul>
+    </div>
+
+
+    <div class="flxMain">
+        <div class="flx1">
+            <canvas id="cl" width="1040px" height="600px"> </canvas>
+            <div id="wrapper">
+                <div id="content">
+                    <div id="places"></div>
+                </div>
+                <div id="sidebar"></div>
+            </div>
+        </div>
+
+
+        <div class="Hide2">
+                <div class="SelectRoom">
+                    <h2>Select Room to add coordinates:</h2>
+                    <nav>
+                        <ul class="navbar">
+                            <li class="dropdown" style="flex: 1 1 auto">
+                                <a href="#">Rooms<i class="fas fa-angle-down"></i></a>
+                                <ul>
+                                    
+                                        <li><a ></a></li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav></br></br></br>
+                    <h2>Selected room :</h2>
+                    <h3>Name room :</h3>
+                    <div id="actualRoom"><h3>ID room: </h3></div>
+                </div>
+        </div>
+        </br>
+    </div>
+    <button name="Download" id="Download">Download</button>
+    <input type="file" onchange="DownloadOtherImage(this)">
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - Object_B - <a href="">Privacy</a>
+        </div>
+    </footer>
+    <script src="../../lib/jquery/dist/jquery.min.js"></script>
+    <script src="../../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/forCookie.js" asp-append-version="true"></script>
+    <script src="../../js/RenameHeaderLog.js" ></script>
+    <script src="../../js/SendSelectedImage.js" ></script>
+
+</body>
+</html>

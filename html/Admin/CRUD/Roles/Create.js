@@ -9,6 +9,7 @@ async function CreateNewPosition() {
     response = await fetch('http://localhost:5000/api/Roles', {
         method: 'POST',
         headers: {
+            "Authorization" : "Bearer "+ takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(data)

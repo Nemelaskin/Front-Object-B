@@ -5,6 +5,7 @@ async function AddedTable(){
     response = await fetch('http://localhost:5000/api/RatingTable/index', {
         method: 'GET',
         headers: {
+          "Authorization" : "Bearer "+ takeCookie("JWT"),
           'Content-Type': 'application/json;charset=utf-8'
         },
       });

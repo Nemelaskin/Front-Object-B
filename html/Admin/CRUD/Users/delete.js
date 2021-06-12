@@ -91,6 +91,7 @@ async function deleteFunc() {
     response = await fetch('http://localhost:5000/api/Users/' + takeCookie("idUserFor"), {
         method: 'DELETE',
         headers: {
+            "Authorization" : "Bearer "+ takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });
@@ -101,6 +102,7 @@ async function queryForTakeUser() {
     response = await fetch('http://localhost:5000/api/Users/' + takeCookie("idUserFor"), {
         method: 'GET',
         headers: {
+            "Authorization" : "Bearer "+ takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });

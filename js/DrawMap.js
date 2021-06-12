@@ -37,7 +37,7 @@ function drawRect(data) {
         id = idMass[i];
         x = id % 52;
         y = Math.trunc(id / 52);
-        ctx.rect((x-1) * 20, y * 20, 20, 20);
+        ctx.rect((x - 1) * 20, y * 20, 20, 20);
         ctx.stroke();
         ctx.fill();
     }
@@ -47,7 +47,11 @@ function drawRect(data) {
 postData();
 function postData() {
     var newRoom = "";
-    fetch("http://localhost:5000/MapComp/CreateRoom?selectRoomId=" + actualRoom + "&newRoom=" + newRoom)
+    fetch("http://localhost:5000/MapComp/CreateRoom?selectRoomId=" + actualRoom + "&newRoom=" + newRoom, {
+        headers: {
+            "Authorization": "Bearer " + takeCookie("JWT")
+        }
+    })
         .then(response => {
             return response.json();
         }).then(data => {
@@ -57,8 +61,11 @@ function postData() {
 
 
 function getPoints() {
-    var newRoom = "";
-    fetch("http://localhost:5000/MoveWorker/GetSensors")
+    fetch("http://localhost:5000/MoveWorker/GetSensors", {
+        headers: {
+            "Authorization": "Bearer " + takeCookie("JWT")
+        }
+    })
         .then(response => {
             return response.json();
         }).then(data1 => {
@@ -67,12 +74,12 @@ function getPoints() {
 }
 
 function drawPoint(data1) {
-    
+
     var pi = Math.PI;
-    
+
     for (var i = 0; i < data1.length; i++) {
         var coords = "";
-        
+
         coords += data1[i]['Coordinates'];
         coords = coords.split('.');
         for (var j = 0; j < 2; j++) {
@@ -86,3 +93,16 @@ function drawPoint(data1) {
         }
     }
 }
+const buttDownload = document.getElementById("Download");
+
+buttDownload.addEventListener("click", function () {
+
+    if (window.navigator.msSaveBlob) {
+        window.navigator.msSaveBlob(canvas.msToBlod(), "canvas-imane.png");
+    } else {
+        downloadCanvas("canvas");
+
+    }
+});
+
+ 

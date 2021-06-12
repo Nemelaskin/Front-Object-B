@@ -5,6 +5,7 @@ async function DromMenuForEdit() {
     response = await fetch('http://localhost:5000/api/Users/' + idUser, {
         method: 'GET',
         headers: {
+            "Authorization" : "Bearer "+ takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });
@@ -110,6 +111,7 @@ async function EditUser() {
     response = await fetch('http://localhost:5000/api/Users', {
         method: 'PUT',
         headers: {
+            "Authorization" : "Bearer "+ takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(data)
@@ -121,6 +123,7 @@ async function queryForPositions() {
     response = await fetch('http://localhost:5000/api/Positions', {
         method: 'GET',
         headers: {
+            "Authorization" : "Bearer "+ takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });
@@ -132,6 +135,7 @@ async function queryForRoles() {
     response = await fetch('http://localhost:5000/api/Roles', {
         method: 'GET',
         headers: {
+            "Authorization" : "Bearer "+ takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });

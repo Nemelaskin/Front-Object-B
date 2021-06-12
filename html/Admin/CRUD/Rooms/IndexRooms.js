@@ -2,6 +2,7 @@ async function queryForTakeRooms() {
   response = await fetch('http://localhost:5000/api/Rooms', {
     method: 'GET',
     headers: {
+      "Authorization" : "Bearer "+ takeCookie("JWT"),
       'Content-Type': 'application/json;charset=utf-8'
     },
   });

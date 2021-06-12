@@ -17,6 +17,7 @@ async function EditRole() {
     response = await fetch('http://localhost:5000/api/Roles', {
         method: 'PUT',
         headers: {
+            "Authorization" : "Bearer "+ takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(data)
@@ -29,6 +30,7 @@ async function queryForTakeRole() {
     response = await fetch('http://localhost:5000/api/Roles/' + takeCookie("idRoleFor"), {
         method: 'GET',
         headers: {
+            "Authorization" : "Bearer "+ takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });

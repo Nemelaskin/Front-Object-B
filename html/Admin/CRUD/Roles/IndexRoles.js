@@ -2,6 +2,7 @@ async function queryForRoles() {
   response = await fetch('http://localhost:5000/api/Roles', {
       method: 'GET',
       headers: {
+        "Authorization" : "Bearer "+ takeCookie("JWT"),
           'Content-Type': 'application/json;charset=utf-8'
       },
   });

@@ -64,7 +64,7 @@ function SwitchState() {
 }
 
 let newRoom = "";
-function newTestButt() {
+function SendButton() {
     var places = $('[ordered = 1]');
     if (places != undefined && places.length > 0) {
 
@@ -100,7 +100,12 @@ async function postData(newRoom) {
         }
     }
 
-    fetch("http://localhost:5000/MapComp/CreateRoom?selectRoomId=" + actualRoom + "&newRoom=" + newRoom)
+    fetch("http://localhost:5000/MapComp/CreateRoom?selectRoomId=" + actualRoom + "&newRoom=" + newRoom, {
+        headers: {
+            "Authorization" : "Bearer "+ takeCookie("JWT"),
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+    })
         .then(response => {
 
             return response.json();
@@ -191,8 +196,6 @@ function statusFunc() {
 }
 
 async function fillDropmenuCompany(){
-
-    
     let companies = (await queryForCompanies());
     
     if( takeCookie("company")!= "NotFound"){
@@ -259,6 +262,7 @@ async function queryForCompanies(){
     response = await fetch('http://localhost:5000/api/Companies', {
         method: 'GET',
         headers: {
+            "Authorization" : "Bearer "+ takeCookie("JWT"),
           'Content-Type': 'application/json;charset=utf-8'
         },
         });
@@ -270,9 +274,12 @@ async function queryForRooms(){
     response = await fetch('http://localhost:5000/api/Rooms', {
         method: 'GET',
         headers: {
+            "Authorization" : "Bearer "+ takeCookie("JWT"),
           'Content-Type': 'application/json;charset=utf-8'
         },
       });
       rooms = (await response.json());
     return rooms;
 }
+
+

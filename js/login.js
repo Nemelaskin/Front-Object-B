@@ -6,8 +6,7 @@ async function postAuth(){
         Password : Password.value
     }
 
-    var response;
-    response = await fetch('http://localhost:5000/api/Auth/login', {
+     var response = await fetch('http://localhost:5000/api/Auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8'

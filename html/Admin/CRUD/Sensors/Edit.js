@@ -5,6 +5,7 @@ async function DromMenuForEdit() {
     response = await fetch('http://localhost:5000/api/Sensors/' + idSensor, {
         method: 'GET',
         headers: {
+            "Authorization" : "Bearer "+ takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });
@@ -62,6 +63,7 @@ async function EditSensor() {
     response = await fetch('http://localhost:5000/api/Sensors', {
         method: 'PUT',
         headers: {
+            "Authorization" : "Bearer "+ takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(data)
@@ -73,6 +75,7 @@ async function queryForUsers() {
     response = await fetch('http://localhost:5000/api/Users', {
         method: 'GET',
         headers: {
+            "Authorization" : "Bearer "+ takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });

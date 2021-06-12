@@ -2,6 +2,7 @@ async function queryForCompanies() {
   response = await fetch('http://localhost:5000/api/Companies', {
       method: 'GET',
       headers: {
+        "Authorization" : "Bearer "+ takeCookie("JWT"),
           'Content-Type': 'application/json;charset=utf-8'
       },
   });

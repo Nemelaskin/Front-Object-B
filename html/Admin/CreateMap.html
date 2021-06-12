@@ -6,11 +6,10 @@
 <link rel="stylesheet" type="text/css" href="../../css/DrawMapStyle.css" />
 <script src="../../js/forCookie.js" defer ></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="../../js/CMapJS.js" defer></script>
+<script src="../../js/CreateMap.js" defer></script>
 
     <title>CreateMap</title>
 </head>
-
 <body>
     <header>
         <nav>
@@ -49,11 +48,12 @@
                 </nav></br></br></br>
             </div>
             <div class="test">
-                <button name="send" asp-controller="MapComp" asp-action="CreateMap" onclick="newTestButt()">Send!</button>
+                <button name="send"  onclick="SendButton()">Send!</button>
             </div>
             <div class="SaveMap">
-                <button name="status" asp-controller="MapComp" asp-action="CreateMap" onclick="statusFunc()">Mode</button>
+                <button name="status"  onclick="statusFunc()">Mode</button>
             </div>
+            <button name="Download" id="Download">Download</button>
         </div>
     </div>
 </body>
