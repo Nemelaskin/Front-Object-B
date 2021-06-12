@@ -93,16 +93,5 @@ function drawPoint(data1) {
         }
     }
 }
-const buttDownload = document.getElementById("Download");
-
-buttDownload.addEventListener("click", function () {
-
-    if (window.navigator.msSaveBlob) {
-        window.navigator.msSaveBlob(canvas.msToBlod(), "canvas-imane.png");
-    } else {
-        downloadCanvas("canvas");
-
-    }
-});
 
  
