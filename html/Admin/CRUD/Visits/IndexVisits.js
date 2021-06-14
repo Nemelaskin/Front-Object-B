@@ -1,23 +1,25 @@
-﻿AddedTable();
-
-async function AddedTable() {
-    response = await apiFetch('/RatingTable/index', {
+async function queryForTakeUsers() {
+    response = await apiFetch('Visits', {
         method: 'GET',
         headers: {
             "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });
-    jsonTable = (await response.json());
+    users = (await response.json());
+    return users;
+}
 
-    console.log(jsonTable);
+AddedTable();
+async function AddedTable() {
+    jsonTable = (await queryForTakeUsers());
 
-    let elem = document.getElementById('testing');
-    CreateTable(elem, jsonTable);
+    let elem = document.getElementById('indexTable');
+    CreateTableForIndex(elem, jsonTable);
 
 }
 
-function CreateTable(parent, json) {
+function CreateTableForIndex(parent, json) {
 
     for (let i = 0; i < json.length; i++) {
         let tr = document.createElement('tr');
@@ -26,17 +28,18 @@ function CreateTable(parent, json) {
         let td2 = document.createElement('td');
         let td3 = document.createElement('td');
         let td4 = document.createElement('td');
+        let tdForLink = document.createElement('td');
 
-        td1.innerText = json[i].position;
-        td2.innerText = json[i].name;
-        td3.innerText = json[i].surName;
-        td4.innerText = json[i].email;
+        td1.innerText = json[i].visitId;
+        td2.innerText = json[i].userId;
+        td3.innerText = json[i].visitTime;
+        td4.innerText = json[i].roomId;
 
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);
         tr.appendChild(td4);
-
+        tr.appendChild(tdForLink);
         parent.appendChild(tr);
     }
 }

@@ -1,5 +1,5 @@
 fillCompany();
-async function fillCompany(){
+async function fillCompany() {
     company = await (queryForTakeCompany());
 
     document.getElementById('NameCompaniesU').value = company.nameCompany;
@@ -20,10 +20,10 @@ async function EditCompany() {
     };
 
     console.log(JSON.stringify(data));
-    response = await fetch('http://localhost:5000/api/Companies', {
+    response = await apiFetch('Companies', {
         method: 'PUT',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
+            "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(data)
@@ -32,10 +32,10 @@ async function EditCompany() {
 }
 
 async function queryForTakeCompany() {
-    response = await fetch('http://localhost:5000/api/Companies/' + takeCookie("idCompaniesFor"), {
+    response = await apiFetch('Companies/' + takeCookie("idCompaniesFor"), {
         method: 'GET',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
+            "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });

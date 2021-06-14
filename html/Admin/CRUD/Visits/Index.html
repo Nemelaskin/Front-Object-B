@@ -7,8 +7,8 @@
     <title>Main Menu</title>
     <link rel="stylesheet" href="../../../../lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../../../../css/site.css" />
-    <link rel="stylesheet" href="../../../../css/adminSite.css" />
     <script src="../../../../js/Api.js"></script>
+    <link rel="stylesheet" href="../../../../css/adminSite.css" />
 </head>
 
 <body>
@@ -36,21 +36,33 @@
             <a href="../Visits/Index.html" class="btn btn-block btn-primary">Visits</a>
         </div>
         <div class="Block1">
-            <h1>Delete</h1>
+            <h1>Visits</h1>
 
-            <h3>Are you sure you want to delete this?</h3>
-            <div>
-                <h4>User</h4>
-                <hr />
-                <dl class="row" id="tableDelete">
+            <p>
+                <a href="Create.html">Create New</a>
+            </p>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>
+                            VisitId
+                        </th>
+                        <th>
+                            UserId
+                        </th>
+                        <th>
+                            VisitTime
+                        </th>
+                        <th>
+                            RoomId
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="indexTable">
 
-                </dl>
-
-                <button id="buttonDelete" class="btn btn-danger" onclick="deleteFunc()">Delete</button>|
-                <a href="Index.html">Back to List</a>
-
-            </div>
-
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -63,7 +75,7 @@
     <script src="../../../../lib/jquery/dist/jquery.min.js"></script>
     <script src="../../../../lib/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="../../../../js/forCookie.js" defer></script>
-    <script src="delete.js" defer></script>
+    <script src="IndexVisits.js" defer></script>
 </body>
 
 </html>

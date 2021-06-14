@@ -38,10 +38,10 @@ function CreateTableDelete(elem, jsonTable) {
 }
 
 async function deleteFunc() {
-    response = await fetch('http://localhost:5000/api/Roles/' + takeCookie("idRoleFor"), {
+    response = await apiFetch('Roles/' + takeCookie("idRoleFor"), {
         method: 'DELETE',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
+            "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });
@@ -49,10 +49,10 @@ async function deleteFunc() {
 }
 
 async function queryForTakeRole() {
-    response = await fetch('http://localhost:5000/api/Roles/' + takeCookie("idRoleFor"), {
+    response = await apiFetch('Roles/' + takeCookie("idRoleFor"), {
         method: 'GET',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
+            "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });

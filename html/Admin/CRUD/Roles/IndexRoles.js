@@ -1,59 +1,58 @@
 async function queryForRoles() {
-  response = await fetch('http://localhost:5000/api/Roles', {
-      method: 'GET',
-      headers: {
-        "Authorization" : "Bearer "+ takeCookie("JWT"),
-          'Content-Type': 'application/json;charset=utf-8'
-      },
-  });
-  roles = (await response.json());
-  return roles;
+    response = await apiFetch('Roles', {
+        method: 'GET',
+        headers: {
+            "Authorization": "Bearer " + takeCookie("JWT"),
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+    });
+    roles = (await response.json());
+    return roles;
 }
 
 AddedTable();
 async function AddedTable() {
-  jsonTable = (await queryForRoles());
+    jsonTable = (await queryForRoles());
 
-  let elem = document.getElementById('indexTable');
-  CreateTableForIndex(elem, jsonTable);
+    let elem = document.getElementById('indexTable');
+    CreateTableForIndex(elem, jsonTable);
 
 }
 
 function CreateTableForIndex(parent, json) {
 
-  for (let i = 0; i < json.length; i++) {
-    let tr = document.createElement('tr');
+    for (let i = 0; i < json.length; i++) {
+        let tr = document.createElement('tr');
 
-    let td1 = document.createElement('td');
-    let td2 = document.createElement('td');
-    let tdForLink = document.createElement('td');
-    let a1 = document.createElement('a');
-    let a2 = document.createElement('a');
+        let td1 = document.createElement('td');
+        let td2 = document.createElement('td');
+        let tdForLink = document.createElement('td');
+        let a1 = document.createElement('a');
+        let a2 = document.createElement('a');
 
-    a1.href = "#";
-    a1.innerText = "Edit | ";
-    a1.addEventListener("click", function () {
-      setCookie('idRoleFor', json[i].roleId, { 'max-age': 3600, samesite: 'strict' });
-      document.location.href = "Update.html";
-    }, false);
+        a1.href = "#";
+        a1.innerText = "Edit | ";
+        a1.addEventListener("click", function() {
+            setCookie('idRoleFor', json[i].roleId, { 'max-age': 3600, samesite: 'strict' });
+            document.location.href = "Update.html";
+        }, false);
 
-    a2.href = "#";
-    a2.innerText = "Delete";
-    a2.addEventListener("click", function () {
-      setCookie('idRoleFor', json[i].roleId, { 'max-age': 3600, samesite: 'strict' });
-      document.location.href = "Delete.html";
-    }, false);
+        a2.href = "#";
+        a2.innerText = "Delete";
+        a2.addEventListener("click", function() {
+            setCookie('idRoleFor', json[i].roleId, { 'max-age': 3600, samesite: 'strict' });
+            document.location.href = "Delete.html";
+        }, false);
 
-    tdForLink.appendChild(a1);
-    tdForLink.appendChild(a2);
-    
-    td1.innerText = json[i].roleId;
-    td2.innerText = json[i].nameRole;
+        tdForLink.appendChild(a1);
+        tdForLink.appendChild(a2);
 
-    tr.appendChild(td1);
-    tr.appendChild(td2);
-    tr.appendChild(tdForLink);
-    parent.appendChild(tr);
-  }
+        td1.innerText = json[i].roleId;
+        td2.innerText = json[i].nameRole;
+
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(tdForLink);
+        parent.appendChild(tr);
+    }
 }
-

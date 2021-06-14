@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../../../lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../../../../css/site.css" />
     <link rel="stylesheet" href="../../../../css/adminSite.css" />
+    <script src="../../../../js/Api.js"></script>
 </head>
 
 <body>
@@ -16,8 +17,7 @@
             <div class="container">
                 <a class="navbar-brand" href="../../../User/home.html">Object_B</a>
                 <a class="navbar-brand" href="../../AdminMain.html">Admin main menu</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -33,6 +33,7 @@
             <a href="../Rooms/Index.html" class="btn btn-block btn-primary">Rooms</a>
             <a href="../Sensors/Index.html" class="btn btn-block btn-primary">Sensors</a>
             <a href="../Users/Index.html" class="btn btn-block btn-primary">Users</a>
+            <a href="../Visits/Index.html" class="btn btn-block btn-primary">Visits</a>
         </div>
         <div class="Block1">
             <h1>Edit</h1>
@@ -41,19 +42,19 @@
             <hr />
             <div class="row">
                 <div class="col-md-4">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-group">
-                            <label class="control-label">NamePosition:</label>
-                            <input id="namePositionU" class="form-control" />
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="control-label">Salary:</label>
-                            <input id="salaryU" class="form-control" />
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Save" onclick="EditPosition()" class="btn btn-primary" />
-                        </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label class="control-label">NamePosition:</label>
+                        <input id="namePositionU" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Salary:</label>
+                        <input id="salaryU" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" onclick="EditPosition()" class="btn btn-primary" />
+                    </div>
                 </div>
             </div>
 
@@ -76,7 +77,7 @@
     <script src="../../../../lib/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="../../../../js/forCookie.js" defer></script>
     <script src="Edit.js" defer></script>
-    
+
 </body>
 
 </html>

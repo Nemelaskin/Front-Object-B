@@ -2,10 +2,10 @@ DromMenuForEdit();
 async function DromMenuForEdit() {
 
     idSensor = takeCookie("idSensorFor");
-    response = await fetch('http://localhost:5000/api/Sensors/' + idSensor, {
+    response = await apiFetch('Sensors/' + idSensor, {
         method: 'GET',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
+            "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });
@@ -22,17 +22,16 @@ async function DromMenuForEdit() {
     document.getElementById('NameSensorU').value = sensor.nameSensor;
     document.getElementById('CoordinatesU').value = sensor.coordinates;
     document.getElementById('dropdownMenuButtonU').innerText = user;
-    
+
     sensorMenu = document.getElementById('dropMenuCreateU');
     for (let i = 0; i < users.length; i++) {
 
         let a_Menu = document.createElement('a');
         a_Menu.innerText = users[i].firstName;
         a_Menu.href = "#";
-        a_Menu.addEventListener("click", function () {
+        a_Menu.addEventListener("click", function() {
             document.getElementById('dropdownMenuButtonU').innerText = users[i].firstName;
-        }
-            , false);
+        }, false);
         a_Menu.classList.add("dropdown-item");
         sensorMenu.appendChild(a_Menu);
     }
@@ -45,7 +44,7 @@ async function EditSensor() {
     _Coordinates = document.getElementById('CoordinatesU').value;
 
     users = await queryForUsers();
-    
+
     let userId = "";
     for (let i = 0; i < users.length; i++) {
         if (_user == users[i].firstName) {
@@ -60,10 +59,10 @@ async function EditSensor() {
     };
 
     console.log(JSON.stringify(data));
-    response = await fetch('http://localhost:5000/api/Sensors', {
+    response = await apiFetch('Sensors', {
         method: 'PUT',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
+            "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(data)
@@ -72,10 +71,10 @@ async function EditSensor() {
 }
 
 async function queryForUsers() {
-    response = await fetch('http://localhost:5000/api/Users', {
+    response = await apiFetch('Users', {
         method: 'GET',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
+            "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });

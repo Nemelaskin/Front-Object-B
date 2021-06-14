@@ -2,10 +2,10 @@ DromMenuForEdit();
 async function DromMenuForEdit() {
 
     idRoom = takeCookie("idRoomFor");
-    response = await fetch('http://localhost:5000/api/Rooms/' + idRoom, {
+    response = await apiFetch('Rooms/' + idRoom, {
         method: 'GET',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
+            "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });
@@ -22,26 +22,25 @@ async function DromMenuForEdit() {
     document.getElementById('NameRoomU').value = room.nameRoom;
     document.getElementById('CoordinatesRoomU').value = room.coordinatesRoom;
     document.getElementById('dropdownMenuButtonU').innerText = company;
-    
+
     companyMenu = document.getElementById('dropMenuCreateU');
     for (let i = 0; i < companies.length; i++) {
 
         let a_Menu = document.createElement('a');
         a_Menu.innerText = companies[i].nameCompany;
         a_Menu.href = "#";
-        a_Menu.addEventListener("click", function () {
+        a_Menu.addEventListener("click", function() {
             document.getElementById('dropdownMenuButtonU').innerText = companies[i].nameCompany;
-        }
-            , false);
+        }, false);
         a_Menu.classList.add("dropdown-item");
         companyMenu.appendChild(a_Menu);
     }
 }
 async function queryForCompanies() {
-    response = await fetch('http://localhost:5000/api/Companies', {
+    response = await apiFetch('Companies', {
         method: 'GET',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
+            "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });
@@ -70,10 +69,10 @@ async function EditRoom() {
     };
 
     console.log(JSON.stringify(data));
-    response = await fetch('http://localhost:5000/api/Rooms', {
+    response = await apiFetch('Rooms', {
         method: 'PUT',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
+            "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(data)

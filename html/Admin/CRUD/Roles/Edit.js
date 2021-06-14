@@ -1,5 +1,5 @@
 fillRole();
-async function fillRole(){
+async function fillRole() {
     position = await (queryForTakeRole());
 
     document.getElementById('NameRoleU').value = position.nameRole;
@@ -9,15 +9,15 @@ async function EditRole() {
     _nameRole = document.getElementById('NameRoleU').value;
 
     var data = {
-        RoleId:  takeCookie("idRoleFor"),
+        RoleId: takeCookie("idRoleFor"),
         NameRole: _nameRole,
     };
 
     console.log(JSON.stringify(data));
-    response = await fetch('http://localhost:5000/api/Roles', {
+    response = await apiFetch('Roles', {
         method: 'PUT',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
+            "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(data)
@@ -27,10 +27,10 @@ async function EditRole() {
 
 
 async function queryForTakeRole() {
-    response = await fetch('http://localhost:5000/api/Roles/' + takeCookie("idRoleFor"), {
+    response = await apiFetch('Roles/' + takeCookie("idRoleFor"), {
         method: 'GET',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
+            "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });

@@ -45,13 +45,15 @@ function drawRect(data) {
 }
 
 postData();
+
 function postData() {
     var newRoom = "";
-    fetch("http://localhost:5000/MapComp/CreateRoom?selectRoomId=" + actualRoom + "&newRoom=" + newRoom, {
-        headers: {
-            "Authorization": "Bearer " + takeCookie("JWT")
-        }
-    })
+    actualRoom = 0;
+    apiFetch("MapComp/CreateRoom?selectRoomId=" + actualRoom + "&newRoom=" + newRoom, {
+            headers: {
+                "Authorization": "Bearer " + takeCookie("JWT")
+            }
+        })
         .then(response => {
             return response.json();
         }).then(data => {
@@ -61,11 +63,11 @@ function postData() {
 
 
 function getPoints() {
-    fetch("http://localhost:5000/MoveWorker/GetSensors", {
-        headers: {
-            "Authorization": "Bearer " + takeCookie("JWT")
-        }
-    })
+    apiFetch("MoveWorker/GetSensors", {
+            headers: {
+                "Authorization": "Bearer " + takeCookie("JWT")
+            }
+        })
         .then(response => {
             return response.json();
         }).then(data1 => {
@@ -93,5 +95,3 @@ function drawPoint(data1) {
         }
     }
 }
-
- 

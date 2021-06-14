@@ -2,10 +2,10 @@ DromMenuForEdit();
 async function DromMenuForEdit() {
 
     idUser = takeCookie("idUserFor");
-    response = await fetch('http://localhost:5000/api/Users/' + idUser, {
+    response = await apiFetch('Users/' + idUser, {
         method: 'GET',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
+            "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });
@@ -45,10 +45,9 @@ async function DromMenuForEdit() {
         let a_Menu = document.createElement('a');
         a_Menu.innerText = positions[i].namePosition;
         a_Menu.href = "#";
-        a_Menu.addEventListener("click", function () {
+        a_Menu.addEventListener("click", function() {
             document.getElementById('dropdownMenuButtonU').innerText = positions[i].namePosition;
-        }
-            , false);
+        }, false);
         a_Menu.classList.add("dropdown-item");
         sensorMenu.appendChild(a_Menu);
     }
@@ -59,10 +58,9 @@ async function DromMenuForEdit() {
         let a_Menu = document.createElement('a');
         a_Menu.innerText = roles[i].nameRole;
         a_Menu.href = "#";
-        a_Menu.addEventListener("click", function () {
+        a_Menu.addEventListener("click", function() {
             document.getElementById('dropdownMenuButtonU2').innerText = roles[i].nameRole;
-        }
-            , false);
+        }, false);
         a_Menu.classList.add("dropdown-item");
         sensorMenu2.appendChild(a_Menu);
     }
@@ -108,10 +106,10 @@ async function EditUser() {
     };
 
     console.log(JSON.stringify(data));
-    response = await fetch('http://localhost:5000/api/Users', {
+    response = await apiFetch('Users', {
         method: 'PUT',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
+            "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(data)
@@ -120,10 +118,10 @@ async function EditUser() {
 }
 
 async function queryForPositions() {
-    response = await fetch('http://localhost:5000/api/Positions', {
+    response = await apiFetch('Positions', {
         method: 'GET',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
+            "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });
@@ -132,10 +130,10 @@ async function queryForPositions() {
 }
 
 async function queryForRoles() {
-    response = await fetch('http://localhost:5000/api/Roles', {
+    response = await apiFetch('Roles', {
         method: 'GET',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
+            "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });

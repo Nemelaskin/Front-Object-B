@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LoginScreen</title>
+    <script src="../js/Api.js"></script>
     <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/site.css" />
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" href="User/home.html">Object_B</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
@@ -45,18 +47,18 @@
     </div>
     <h1>Login</h1>
 
-<form class="m-2">
-    <div class="form-group">
-        <label for="Email">Email</label>
-        <input name="Email" type="email" class="form-control" id="Email" />
-    </div>
+    <form class="m-2">
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <input name="Email" type="email" class="form-control" id="Email" />
+        </div>
 
-    <div class="form-group">
-        <label for="Password">Password</label>
-        <input name="Password" type="password" class="form-control" id="Password" />
-    </div>
-    <input id="subPost"  value="Отправить" class="btn btn-primary" onclick="postAuth()"/>
-</form>
+        <div class="form-group">
+            <label for="Password">Password</label>
+            <input name="Password" type="password" class="form-control" id="Password" />
+        </div>
+        <input id="subPost" value="Отправить" class="btn btn-primary" onclick="postAuth()" />
+    </form>
 
 
     <footer class="border-top footer text-muted">
@@ -66,7 +68,8 @@
     </footer>
     <script src="../lib/jquery/dist/jquery.min.js"></script>
     <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/forCookie.js" asp-append-version="true"></script>
-    <script src="../js/login.js" asp-append-version="true"></script>
+    <script src="../js/forCookie.js"></script>
+    <script src="../js/login.js"></script>
 </body>
+
 </html>

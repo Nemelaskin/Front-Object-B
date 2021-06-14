@@ -3,7 +3,7 @@ async function CreateNewCompanies() {
     _MapLink = document.getElementById('MapLink').value;
     _Owner = document.getElementById('Owner').value;
 
-    
+
     var data = {
         MapLink: _MapLink,
         NameCompany: _NameCompanies,
@@ -11,10 +11,10 @@ async function CreateNewCompanies() {
     };
 
     console.log(JSON.stringify(data));
-    response = await fetch('http://localhost:5000/api/Companies', {
+    response = await apiFetch('Companies', {
         method: 'POST',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
+            "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(data)

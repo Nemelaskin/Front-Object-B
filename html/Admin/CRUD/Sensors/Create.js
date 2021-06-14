@@ -4,7 +4,7 @@ async function CreateNewSensor() {
     _Coordinates = document.getElementById('Coordinates').value;
 
     users = await queryForUsers();
-    
+
     let userId = "";
     for (let i = 0; i < users.length; i++) {
         if (_user == users[i].firstName) {
@@ -21,10 +21,10 @@ async function CreateNewSensor() {
     console.log(_Coordinates);
 
     console.log(JSON.stringify(data));
-    response = await fetch('http://localhost:5000/api/Sensors', {
+    response = await apiFetch('Sensors', {
         method: 'POST',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
+            "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(data)
@@ -34,10 +34,10 @@ async function CreateNewSensor() {
 }
 
 async function queryForUsers() {
-    response = await fetch('http://localhost:5000/api/Users', {
+    response = await apiFetch('Users', {
         method: 'GET',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
+            "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });
@@ -55,13 +55,10 @@ async function DromMenuForCreate() {
         let a_Menu = document.createElement('a');
         a_Menu.innerText = users[i].firstName;
         a_Menu.href = "#";
-        a_Menu.addEventListener("click", function () {
+        a_Menu.addEventListener("click", function() {
             document.getElementById('dropdownMenuButton').innerText = users[i].firstName;
-        }
-            , false);
+        }, false);
         a_Menu.classList.add("dropdown-item");
         sensorMenu.appendChild(a_Menu);
     }
 }
-
-

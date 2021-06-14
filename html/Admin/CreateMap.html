@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../../css/CMapStyle.css" />
-<link rel="stylesheet" type="text/css" href="../../css/DrawMapStyle.css" />
-<script src="../../js/forCookie.js" defer ></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="../../js/CreateMap.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="../../css/DrawMapStyle.css" />
+    <script src="../../js/Api.js"></script>
+    <script src="../../js/forCookie.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../../js/CreateMap.js" defer></script>
 
     <title>CreateMap</title>
 </head>
+
 <body>
     <header>
         <nav>
             <ul class="navbar">
                 <li class="dropdown">
                     <a href="#" id="CompanyNow">test<i class="fas fa-angle-down"></i></a>
-                    <ul id = "choices">
+                    <ul id="choices">
                     </ul>
                 </li>
                 <li><a href="AdminMain.html">Main admin menu</a></li>
@@ -41,20 +44,24 @@
                     <ul class="navbar">
                         <li class="dropdown" style="flex: 1 1 auto">
                             <a href="#" id="roomNow"><i class="fas fa-angle-down"></i></a>
-                            <ul id = "choices2">
+                            <ul id="choices2">
                             </ul>
                         </li>
                     </ul>
-                </nav></br></br></br>
+                </nav>
+                </br>
+                </br>
+                </br>
             </div>
             <div class="test">
-                <button name="send"  onclick="SendButton()">Send!</button>
+                <button name="send" onclick="SendButton()">Send!</button>
             </div>
             <div class="SaveMap">
-                <button name="status"  onclick="statusFunc()">Mode</button>
+                <button name="status" onclick="statusFunc()">Mode</button>
             </div>
             <button name="Download" id="Download">Download</button>
         </div>
     </div>
 </body>
+
 </html>

@@ -47,14 +47,13 @@ function SwitchState() {
             this.setAttribute("ordered", 1);
             num++;
         }
-        if ((rightItem.getAttribute("ordered") == 0 && leftItem.getAttribute("ordered") == 1
-            || rightItem.getAttribute("ordered") == 1 && leftItem.getAttribute("ordered") == 0)
-            || upItem.getAttribute("ordered") == 1 || downItem.getAttribute("ordered") == 1) {
+        if ((rightItem.getAttribute("ordered") == 0 && leftItem.getAttribute("ordered") == 1 ||
+                rightItem.getAttribute("ordered") == 1 && leftItem.getAttribute("ordered") == 0) ||
+            upItem.getAttribute("ordered") == 1 || downItem.getAttribute("ordered") == 1) {
             this.style.background = "Blue"
             this.setAttribute("ordered", 1);
             num++;
-        }
-        else {
+        } else {
 
             return;
         }
@@ -64,6 +63,7 @@ function SwitchState() {
 }
 
 let newRoom = "";
+
 function SendButton() {
     var places = $('[ordered = 1]');
     if (places != undefined && places.length > 0) {
@@ -74,7 +74,6 @@ function SendButton() {
             places[i].style.background = "Green";
             places[i].setAttribute("ordered", 2);
             num = 0;
-            location.href = location.href;
         }
 
         postData(newRoom);
@@ -87,25 +86,25 @@ async function postData(newRoom) {
     let actualRoom;
     tempAllRooms = await queryForRooms();
     tempCompies = await queryForCompanies();
-    let compId="";
-    for(let i = 0; i < tempCompies.length; i++){
-        if(document.getElementById('CompanyNow').innerText == tempCompies[i].nameCompany ){
+    let compId = "";
+    for (let i = 0; i < tempCompies.length; i++) {
+        if (document.getElementById('CompanyNow').innerText == tempCompies[i].nameCompany) {
             compId = tempCompies[i].companyId;
         }
     }
-    
-    for(let i = 0; i < tempAllRooms.length; i++){
-        if(tempAllRooms[i].nameRoom == document.getElementById('roomNow').innerText && tempAllRooms[i].companyId == compId){
+
+    for (let i = 0; i < tempAllRooms.length; i++) {
+        if (tempAllRooms[i].nameRoom == document.getElementById('roomNow').innerText && tempAllRooms[i].companyId == compId) {
             actualRoom = tempAllRooms[i].roomId;
         }
     }
 
-    fetch("http://localhost:5000/MapComp/CreateRoom?selectRoomId=" + actualRoom + "&newRoom=" + newRoom, {
-        headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
-          'Content-Type': 'application/json;charset=utf-8'
-        },
-    })
+    apiFetch("MapComp/CreateRoom?selectRoomId=" + actualRoom + "&newRoom=" + newRoom, {
+            headers: {
+                "Authorization": "Bearer " + takeCookie("JWT"),
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+        })
         .then(response => {
 
             return response.json();
@@ -119,15 +118,15 @@ async function SelectRoom(data) {
     let actualRoom;
     tempAllRooms = await queryForRooms();
     tempCompies = await queryForCompanies();
-    let compId="";
-    for(let i = 0; i < tempCompies.length; i++){
-        if(document.getElementById('CompanyNow').innerText == tempCompies[i].nameCompany ){
+    let compId = "";
+    for (let i = 0; i < tempCompies.length; i++) {
+        if (document.getElementById('CompanyNow').innerText == tempCompies[i].nameCompany) {
             compId = tempCompies[i].companyId;
         }
     }
-    
-    for(let i = 0; i < tempAllRooms.length; i++){
-        if(tempAllRooms[i].nameRoom == document.getElementById('roomNow').innerText && tempAllRooms[i].companyId == compId){
+
+    for (let i = 0; i < tempAllRooms.length; i++) {
+        if (tempAllRooms[i].nameRoom == document.getElementById('roomNow').innerText && tempAllRooms[i].companyId == compId) {
             actualRoom = tempAllRooms[i].roomId;
         }
     }
@@ -140,7 +139,6 @@ async function SelectRoom(data) {
     }
     if (room != "") {
         room = room.split(" ");
-        //console.log("room: " + room);
         if (STATUS == "develop") {
             var places = $('[ordered = 2]');
             for (var i = 0; i < places.length; i++) {
@@ -159,7 +157,7 @@ async function SelectRoom(data) {
 
 function countRooms(data) {
     var nowCompany = document.getElementById("CompanyNow").innerText;
-    let allRooms = ""; 
+    let allRooms = "";
     for (var i = 0; i < data.length; i++) {
         if (data[i]['Company']['NameCompany'] == nowCompany) {
             allRooms += data[i]['CoordinatesRoom'] + " ";
@@ -195,24 +193,24 @@ function statusFunc() {
     location.reload();
 }
 
-async function fillDropmenuCompany(){
+async function fillDropmenuCompany() {
     let companies = (await queryForCompanies());
-    
-    if( takeCookie("company")!= "NotFound"){
+
+    if (takeCookie("company") != "NotFound") {
         document.getElementById('CompanyNow').innerText = takeCookie("company");
-    }else{
+    } else {
         setCookie('company', companies[0].nameCompany, { 'max-age': 3600, samesite: 'strict' });
         document.getElementById('CompanyNow').innerText = takeCookie("company");
     }
 
     companyMenu = document.getElementById('choices');
-    for(let i =0; i < companies.length; i++){
+    for (let i = 0; i < companies.length; i++) {
         let li = document.createElement('li');
         let callFunc = document.createElement('a');
-        callFunc.addEventListener("click", function(){setCookie('company', companies[i].nameCompany, { 'max-age': 3600, samesite: 'strict' });
-        location.reload();
-    }
-        , false);
+        callFunc.addEventListener("click", function() {
+            setCookie('company', companies[i].nameCompany, { 'max-age': 3600, samesite: 'strict' });
+            location.reload();
+        }, false);
         callFunc.innerText = companies[i].nameCompany;
         li.appendChild(callFunc);
         companyMenu.appendChild(li);
@@ -220,36 +218,33 @@ async function fillDropmenuCompany(){
 }
 
 
-async function fillDropmenuRooms(){
+async function fillDropmenuRooms() {
     let rooms = (await queryForRooms());
     let tempCompies = (await queryForCompanies());
 
-    if( takeCookie("rooms")!= "NotFound")
-    {
+    if (takeCookie("rooms") != "NotFound") {
         document.getElementById('roomNow').innerText = takeCookie("rooms");
-    }
-    else
-    {
+    } else {
         setCookie('rooms', rooms[0].nameRoom, { 'max-age': 3600, samesite: 'strict' });
         document.getElementById('roomNow').innerText = takeCookie("rooms");
     }
     roomsMenu = document.getElementById('choices2');
-    let compId="";
-    for(let i = 0; i < tempCompies.length; i++){
-        if(document.getElementById('CompanyNow').innerText == tempCompies[i].nameCompany){
+    let compId = "";
+    for (let i = 0; i < tempCompies.length; i++) {
+        if (document.getElementById('CompanyNow').innerText == tempCompies[i].nameCompany) {
             compId = tempCompies[i].companyId;
         }
     }
-    
-    for(let i =0; i < rooms.length; i++){
+
+    for (let i = 0; i < rooms.length; i++) {
         let li = document.createElement('li');
         let callFunc = document.createElement('a');
-        callFunc.addEventListener("click", function(){setCookie('rooms', rooms[i].nameRoom, { 'max-age': 3600, samesite: 'strict' });
-        location.reload();
-    }
-        , false);
-        
-        if(rooms[i].companyId == compId){
+        callFunc.addEventListener("click", function() {
+            setCookie('rooms', rooms[i].nameRoom, { 'max-age': 3600, samesite: 'strict' });
+            location.reload();
+        }, false);
+
+        if (rooms[i].companyId == compId) {
             callFunc.innerText = rooms[i].nameRoom;
             li.appendChild(callFunc);
         }
@@ -258,28 +253,26 @@ async function fillDropmenuRooms(){
 }
 
 
-async function queryForCompanies(){
-    response = await fetch('http://localhost:5000/api/Companies', {
+async function queryForCompanies() {
+    response = await apiFetch('Companies', {
         method: 'GET',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
-          'Content-Type': 'application/json;charset=utf-8'
+            "Authorization": "Bearer " + takeCookie("JWT"),
+            'Content-Type': 'application/json;charset=utf-8'
         },
-        });
-        Compies = (await response.json());
+    });
+    Compies = (await response.json());
     return Compies;
 }
 
-async function queryForRooms(){
-    response = await fetch('http://localhost:5000/api/Rooms', {
+async function queryForRooms() {
+    response = await apiFetch('Rooms', {
         method: 'GET',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
-          'Content-Type': 'application/json;charset=utf-8'
+            "Authorization": "Bearer " + takeCookie("JWT"),
+            'Content-Type': 'application/json;charset=utf-8'
         },
-      });
-      rooms = (await response.json());
+    });
+    rooms = (await response.json());
     return rooms;
 }
-
-

@@ -18,10 +18,10 @@ async function CreateNewRoom() {
     };
 
     console.log(JSON.stringify(data));
-    response = await fetch('http://localhost:5000/api/Rooms', {
+    response = await apiFetch('Rooms', {
         method: 'POST',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
+            "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(data)
@@ -31,10 +31,10 @@ async function CreateNewRoom() {
 }
 
 async function queryForCompanies() {
-    response = await fetch('http://localhost:5000/api/Companies', {
+    response = await apiFetch('Companies', {
         method: 'GET',
         headers: {
-            "Authorization" : "Bearer "+ takeCookie("JWT"),
+            "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });
@@ -51,13 +51,10 @@ async function DromMenuForCreate() {
         let a_Menu = document.createElement('a');
         a_Menu.innerText = companies[i].nameCompany;
         a_Menu.href = "#";
-        a_Menu.addEventListener("click", function () {
+        a_Menu.addEventListener("click", function() {
             document.getElementById('dropdownMenuButton').innerText = companies[i].nameCompany;
-        }
-            , false);
+        }, false);
         a_Menu.classList.add("dropdown-item");
         companyMenu.appendChild(a_Menu);
     }
 }
-
-

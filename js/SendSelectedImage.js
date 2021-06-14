@@ -1,6 +1,6 @@
 const buttDownload = document.getElementById("Download");
 var nowCompany = document.getElementById("CompanyNow").innerHTML.split('<')[0];
-buttDownload.addEventListener("click", function () {
+buttDownload.addEventListener("click", function() {
 
     if (window.navigator.msSaveBlob) {
         window.navigator.msSaveBlob(canvas.msToBlod(), "canvas-imane.png");
@@ -10,35 +10,35 @@ buttDownload.addEventListener("click", function () {
     }
 });
 
-function DownloadOtherImage(input){
+function DownloadOtherImage(input) {
     let file = input.files[0];
     let reader = new FileReader();
     reader.readAsDataURL(file);
 
-    reader.onload = function(){
+    reader.onload = function() {
         downloadCanvas(reader.result);
     }
 }
 
 async function downloadCanvas(format) {
 
-    if(format == "canvas"){
+    if (format == "canvas") {
         var data = {
             Map: canvas.toDataURL(),
             nameCompany: nowCompany
-        }    
+        }
     } else {
         var data = {
             Map: format,
             nameCompany: nowCompany
         }
     }
-    
-    var response = await fetch('http://localhost:5000/api/Map/Download', {
+    var response = await apiFetch('Map/Download', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(data)
     });
+
 }
