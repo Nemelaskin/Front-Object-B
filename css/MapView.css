@@ -3,11 +3,26 @@ img {
     border-radius: 4px;
     padding: 5px;
     width: 1050px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    height: 610px;
+    position: relative;
 }
 
 h2 {
     text-align: center;
+}
+
+canvas {
+    position: relative;
+    width: 1040px;
+    height: 600px;
+    left: 5px;
+    top: -99%;
+}
+
+#wrapper {
+    width: 1050px;
+    height: 610px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

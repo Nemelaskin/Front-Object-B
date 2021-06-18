@@ -1,7 +1,7 @@
 ﻿AddedTable();
 
 async function AddedTable() {
-    response = await apiFetch('/RatingTable/index', {
+    response = await apiFetch('RatingTable/index', {
         method: 'GET',
         headers: {
             "Authorization": "Bearer " + takeCookie("JWT"),

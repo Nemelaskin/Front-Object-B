@@ -41,7 +41,6 @@ function drawRect(data) {
         ctx.stroke();
         ctx.fill();
     }
-    getPoints();
 }
 
 postData();
@@ -59,39 +58,4 @@ function postData() {
         }).then(data => {
             drawRect(data);
         });
-}
-
-
-function getPoints() {
-    apiFetch("MoveWorker/GetSensors", {
-            headers: {
-                "Authorization": "Bearer " + takeCookie("JWT")
-            }
-        })
-        .then(response => {
-            return response.json();
-        }).then(data1 => {
-            drawPoint(data1);
-        });
-}
-
-function drawPoint(data1) {
-
-    var pi = Math.PI;
-
-    for (var i = 0; i < data1.length; i++) {
-        var coords = "";
-
-        coords += data1[i]['Coordinates'];
-        coords = coords.split('.');
-        for (var j = 0; j < 2; j++) {
-            ctx.beginPath();
-            ctx.lineWidth = "4px";
-            ctx.strokeStyle = "red";
-            ctx.fillStyle = "red";
-            ctx.arc(coords[0], coords[1], 5, 0, 2 * pi, false);
-            ctx.stroke();
-            ctx.fill();
-        }
-    }
 }

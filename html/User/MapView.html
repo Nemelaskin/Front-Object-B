@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HomePage</title>
     <link rel="stylesheet" href="../../lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@microsoft/signalr/dist/browser/signalr.min.js"></script>
     <link rel="stylesheet" href="../../css/site.css" />
     <script src="../../js/Api.js"></script>
     <link rel="stylesheet" href="../../css/MapView.css" />
@@ -47,9 +48,14 @@
         </main>
     </div>
     <h2 id="CompanyNow">TestCompany1</h2>
-    <img src="URL" id="testingImage">
 
+    <div id="wrapper">
+        <img src="" id="testingImage">
+        <canvas id="cl" width="1040px" height="600px"> </canvas>
+    </div>
 
+    <button onclick="testing()">Emitation start</button>
+    <button onclick="StopSendInfo()">Stop emitation</button>
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2021 - Object_B - <a href="Privacy.html">Privacy</a>
@@ -60,6 +66,8 @@
     <script src="../../js/forCookie.js"></script>
     <script src="../../js/RenameHeaderLogin.js"></script>
     <script src="../../js/MapView.js"></script>
+    <script src="../../js/ClientSignalR.js"></script>
+    <script src="../../js/CoordinatesWorkers.js"></script>
 </body>
 
 </html>
