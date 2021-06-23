@@ -5,11 +5,9 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../../css/CMapStyle.css" />
     <link rel="stylesheet" type="text/css" href="../../css/DrawMapStyle.css" />
+    <script src="../../js/forCookie.js"></script>
     <script src="../../js/Api.js"></script>
-    <script src="../../js/forCookie.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="../../js/CreateMap.js" defer></script>
-
     <title>CreateMap</title>
 </head>
 
@@ -22,7 +20,7 @@
                     <ul id="choices">
                     </ul>
                 </li>
-                <li><a href="AdminMain.html">Main admin menu</a></li>
+                <li><a id="backToMenu" href="AdminMain.html">Main admin menu</a></li>
             </ul>
         </nav>
     </header>
@@ -39,7 +37,7 @@
 
         <div class="flx2">
             <div class="SelectRoom">
-                <h2>Select Room to add coordinates:</h2>
+                <h2 id="textToSelect"></h2>
                 <nav>
                     <ul class="navbar">
                         <li class="dropdown" style="flex: 1 1 auto">
@@ -54,14 +52,15 @@
                 </br>
             </div>
             <div class="test">
-                <button name="send" onclick="SendButton()">Send!</button>
+                <button id="send" name="send" onclick="SendButton()"></button>
             </div>
             <div class="SaveMap">
-                <button name="status" onclick="statusFunc()">Mode</button>
+                <button id="mode" name="status" onclick="statusFunc()">Mode</button>
             </div>
-            <button name="Download" id="Download">Download</button>
         </div>
     </div>
+    <script src="../../js/CreateMap.js"></script>
+    <script src="../Localization/LocVariablesViewForMaps.js"></script>
 </body>
 
 </html>

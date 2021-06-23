@@ -7,8 +7,8 @@
     <title>Main Menu</title>
     <link rel="stylesheet" href="../../lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../../css/site.css" />
-    <script src="../../js/Api.js"></script>
     <link rel="stylesheet" href="../../css/adminSite.css" />
+    <script src="../../js/forCookie.js"></script>
 </head>
 
 <body>
@@ -16,8 +16,8 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" href="../User/home.html ">Object_B</a>
-                <a class="navbar-brand" href="CreateMap.html">Create map</a>
-                <a class="navbar-brand" href="MapSelect.html">Select map</a>
+                <a id="createMap" class="navbar-brand" href="CreateMap.html">Create map</a>
+                <a id="selectMap" class="navbar-brand" href="MapSelect.html">Select map</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -28,13 +28,13 @@
 
     <div class="block_row">
         <div class="block_column3">
-            <a href="CRUD/Companies/Index.html" class="btn btn-block btn-primary">Companies</a>
-            <a href="CRUD/Roles/Index.html" class="btn btn-block btn-primary">Roles</a>
-            <a href="CRUD/Positions/Index.html" class="btn btn-block btn-primary">Positions</a>
-            <a href="CRUD/Rooms/Index.html" class="btn btn-block btn-primary">Rooms</a>
-            <a href="CRUD/Sensors/Index.html" class="btn btn-block btn-primary">Sensors</a>
-            <a href="CRUD/Users/Index.html" class="btn btn-block btn-primary">Users</a>
-            <a href="CRUD/Visits/Index.html" class="btn btn-block btn-primary">Visits</a>
+            <a id="companies" href="CRUD/Companies/Index.html" class="btn btn-block btn-primary">Companies</a>
+            <a id="roles" href="CRUD/Roles/Index.html" class="btn btn-block btn-primary">Roles</a>
+            <a id="positions" href="CRUD/Positions/Index.html" class="btn btn-block btn-primary">Positions</a>
+            <a id="rooms" href="CRUD/Rooms/Index.html" class="btn btn-block btn-primary">Rooms</a>
+            <a id="sensors" href="CRUD/Sensors/Index.html" class="btn btn-block btn-primary">Sensors</a>
+            <a id="users" href="CRUD/Users/Index.html" class="btn btn-block btn-primary">Users</a>
+            <a id="visits" href="CRUD/Visits/Index.html" class="btn btn-block btn-primary">Visits</a>
         </div>
         <div class="Block1">
         </div>s
@@ -48,7 +48,8 @@
     </footer>
     <script src="../../lib/jquery/dist/jquery.min.js"></script>
     <script src="../../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../js/forCookie.js" defer asp-append-version="true"></script>
+
+    <script src="../Localization/LocVariablesViewForAdmin.js"></script>
 </body>
 
 </html>

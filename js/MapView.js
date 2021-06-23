@@ -1,20 +1,21 @@
-var nowCompany = document.getElementById("CompanyNow").innerHTML;
+let path = "http://localhost:5000";
+viewImage();
 
-RequestFunc();
-async function RequestFunc() {
-    response = await apiFetch('Map/ViewMap?nameCompany=' + nowCompany, {
+async function viewImage() {
+    let companies = await queryForCompanies();
+    let img = document.getElementById('testingImage');
+    let imageUrl = companies[0].mapLink;
+    img.src = path + imageUrl
+}
+
+async function queryForCompanies() {
+    response = await apiFetch('Companies', {
         method: 'GET',
         headers: {
             "Authorization": "Bearer " + takeCookie("JWT"),
             'Content-Type': 'application/json;charset=utf-8'
         },
     });
-
-    var arrayBufferView = (await response.arrayBuffer());
-    var blob = new Blob([arrayBufferView], { type: "image/png" });
-    var urlCreator = window.URL || window.webkitURL;
-    var imageUrl = urlCreator.createObjectURL(blob);
-    var img = document.getElementById("testingImage");
-    img.src = imageUrl;
-    console.log(img);
+    Compies = (await response.json());
+    return Compies;
 }
