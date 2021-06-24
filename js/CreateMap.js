@@ -1,5 +1,4 @@
-﻿document.addEventListener("DOMContentLoaded", () => {
-    fillDropmenuCompany();
+﻿    fillDropmenuCompany();
     fillDropmenuRooms();
 
 
@@ -64,8 +63,6 @@
     }
 
     let newRoom = "";
-
-
 
     postData(newRoom);
 
@@ -197,7 +194,6 @@
         }
     }
 
-
     async function fillDropmenuRooms() {
         let rooms = (await queryForRooms());
         let tempCompies = (await queryForCompanies());
@@ -280,4 +276,3 @@
         rooms = (await response.json());
         return rooms;
     }
-});

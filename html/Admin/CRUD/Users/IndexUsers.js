@@ -31,7 +31,6 @@ function CreateTableForIndex(parent, json) {
         let td5 = document.createElement('td');
         let td6 = document.createElement('td');
         let td7 = document.createElement('td');
-        let td8 = document.createElement('td');
         let tdForLink = document.createElement('td');
         let a1 = document.createElement('a');
         let a2 = document.createElement('a');
@@ -58,7 +57,6 @@ function CreateTableForIndex(parent, json) {
         td3.innerText = json[i].secondName;
         td4.innerText = json[i].email;
         td5.innerText = json[i].phone;
-        td8.innerText = json[i].password;
         td6.innerText = json[i].roleId;
         td7.innerText = json[i].positionId;
 
@@ -67,7 +65,6 @@ function CreateTableForIndex(parent, json) {
         tr.appendChild(td3);
         tr.appendChild(td4);
         tr.appendChild(td5);
-        tr.appendChild(td8);
         tr.appendChild(td6);
         tr.appendChild(td7);
         tr.appendChild(tdForLink);
