@@ -1,8 +1,3 @@
-const connection = new signalR.HubConnectionBuilder()
-    .withUrl("http://localhost:5000/chat")
-    .configureLogging(signalR.LogLevel.Information)
-    .build();
-
 async function start() {
     try {
         await connection.start();
@@ -13,11 +8,18 @@ async function start() {
     }
 };
 
+const connection = new signalR.HubConnectionBuilder()
+    .withUrl("http://localhost:5000/chat")
+    .configureLogging(signalR.LogLevel.Information)
+    .build();
+
 connection.onclose(start);
 
 start();
 
-function testing() {
+function StartEmut() {
+
+
     apiFetch("MoveWorker/EmitationMove", {
         method: 'GET',
         headers: {

@@ -65,21 +65,7 @@
 
     let newRoom = "";
 
-    function SendButton() {
-        var places = $('[ordered = 1]');
-        if (places != undefined && places.length > 0) {
 
-            for (var i = 0; i < places.length; i++) {
-                newRoom += places[i].getAttribute("id") + " ";
-
-                places[i].style.background = "Green";
-                places[i].setAttribute("ordered", 2);
-                num = 0;
-            }
-
-            postData(newRoom);
-        }
-    }
 
     postData(newRoom);
 
@@ -185,14 +171,7 @@
         }
     }
 
-    function statusFunc() {
-        if (STATUS == "develop")
-            STATUS = "save";
-        else
-            STATUS = "develop";
-        setCookie('STATUS', STATUS, { 'max-age': 3600, samesite: 'strict' });
-        location.reload();
-    }
+
 
     async function fillDropmenuCompany() {
         let companies = (await queryForCompanies());
@@ -253,6 +232,30 @@
         }
     }
 
+    function SendButton() {
+        var places = $('[ordered = 1]');
+        if (places != undefined && places.length > 0) {
+
+            for (var i = 0; i < places.length; i++) {
+                newRoom += places[i].getAttribute("id") + " ";
+
+                places[i].style.background = "Green";
+                places[i].setAttribute("ordered", 2);
+                num = 0;
+            }
+
+            postData(newRoom);
+        }
+    }
+
+    function statusFunc() {
+        if (STATUS == "develop")
+            STATUS = "save";
+        else
+            STATUS = "develop";
+        setCookie('STATUS', STATUS, { 'max-age': 3600, samesite: 'strict' });
+        location.reload();
+    }
 
     async function queryForCompanies() {
         response = await apiFetch('Companies', {

@@ -34,8 +34,6 @@ async function DromMenuForEdit() {
     document.getElementById('SecondNameU').value = user.secondName;
     document.getElementById('EmailU').value = user.email;
     document.getElementById('PhoneU').value = user.phone;
-    document.getElementById('PasswordU').value = user.password;
-
     document.getElementById('dropdownMenuButtonU').innerText = position;
     document.getElementById('dropdownMenuButtonU2').innerText = role;
 
@@ -68,11 +66,21 @@ async function DromMenuForEdit() {
 
 
 async function EditUser() {
+    idUser = takeCookie("idUserFor");
+    response = await apiFetch('Users/' + idUser, {
+        method: 'GET',
+        headers: {
+            "Authorization": "Bearer " + takeCookie("JWT"),
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+    });
+    user = (await response.json());
+    _Password = user.password;
+
     _FirstName = document.getElementById('FirstNameU').value;
     _SecondName = document.getElementById('SecondNameU').value;
     _Email = document.getElementById('EmailU').value;
     _Phone = document.getElementById('PhoneU').value;
-    _Password = document.getElementById('PasswordU').value;
 
     _position = document.getElementById('dropdownMenuButtonU').innerText;
     _role = document.getElementById('dropdownMenuButtonU2').innerText;
