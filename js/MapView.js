@@ -5,7 +5,7 @@ async function viewImage() {
     let companies = await queryForCompanies();
     let img = document.getElementById('testingImage');
     let imageUrl = companies[0].mapLink;
-    img.src = path + imageUrl
+    img.src = path + imageUrl;
 }
 
 async function queryForCompanies() {
