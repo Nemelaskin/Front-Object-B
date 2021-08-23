@@ -20,7 +20,8 @@ async function DromMenuForEdit() {
         }
     }
     document.getElementById('NameSensorU').value = sensor.nameSensor;
-    document.getElementById('CoordinatesU').value = sensor.coordinates;
+    document.getElementById('XU').value = sensor.x;
+    document.getElementById('YU').value = sensor.y;
     document.getElementById('dropdownMenuButtonU').innerText = user;
 
     sensorMenu = document.getElementById('dropMenuCreateU');
@@ -41,7 +42,8 @@ async function DromMenuForEdit() {
 async function EditSensor() {
     _user = document.getElementById('dropdownMenuButtonU').innerText;
     _NameSensor = document.getElementById('NameSensorU').value;
-    _Coordinates = document.getElementById('CoordinatesU').value;
+    _X = document.getElementById('XU').value;
+    _Y = document.getElementById('YU').value;
 
     users = await queryForUsers();
 
@@ -55,7 +57,8 @@ async function EditSensor() {
         SensorId: takeCookie("idSensorFor"),
         NameSensor: _NameSensor,
         UserId: userId,
-        Coordinates: _Coordinates
+        X: _X,
+        Y: _Y
     };
 
     console.log(JSON.stringify(data));

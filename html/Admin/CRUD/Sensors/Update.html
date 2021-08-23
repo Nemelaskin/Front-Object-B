@@ -48,7 +48,7 @@
                         <input id="NameSensorU" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <label asp-for="CompanyId" class="control-label">CompanyId:</label>
+                        <label asp-for="CompanyId" class="control-label">UserId:</label>
                         <div class="dropdown">
                             <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButtonU" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   Select company
@@ -59,8 +59,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label">Coordinates:</label>
-                        <input id="CoordinatesU" class="form-control" />
+                        <label class="control-label">X:</label>
+                        <input id="XU" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Y:</label>
+                        <input id="YU" class="form-control" />
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Save" onclick="EditSensor()" class="btn btn-primary" />

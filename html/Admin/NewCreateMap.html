@@ -4,11 +4,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Main Menu</title>
+    <title>New Create map</title>
     <link rel="stylesheet" href="../../lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../../css/site.css" />
     <link rel="stylesheet" href="../../css/adminSite.css" />
+    <link rel="stylesheet" href="../../css/MapView.css" />
     <script src="../../js/forCookie.js"></script>
+    <script src="../../js/Api.js"></script>
 </head>
 
 <body>
@@ -18,7 +20,6 @@
                 <a class="navbar-brand" href="../User/home.html ">Object_B</a>
                 <a id="createMap" class="navbar-brand" href="CreateMap.html">Create map</a>
                 <a id="selectMap" class="navbar-brand" href="MapSelect.html">Select map</a>
-                <a id="selectMap" class="navbar-brand" href="NewCreateMap.html">TEST Create map</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -27,31 +28,36 @@
         </nav>
     </header>
 
-    <div class="block_row">
-        <div class="block_column3">
-            <a id="companies" href="CRUD/Companies/Index.html" class="btn btn-block btn-primary">Companies</a>
-            <a id="roles" href="CRUD/Roles/Index.html" class="btn btn-block btn-primary">Roles</a>
-            <a id="positions" href="CRUD/Positions/Index.html" class="btn btn-block btn-primary">Positions</a>
-            <a id="rooms" href="CRUD/Rooms/Index.html" class="btn btn-block btn-primary">Rooms</a>
-            <a id="sensors" href="CRUD/Sensors/Index.html" class="btn btn-block btn-primary">Sensors</a>
-            <a id="users" href="CRUD/Users/Index.html" class="btn btn-block btn-primary">Users</a>
-            <a id="visits" href="CRUD/Visits/Index.html" class="btn btn-block btn-primary">Visits</a>
-            <a id="visits" href="CRUD/News/Index.html" class="btn btn-block btn-primary">News</a>
+    <div class="containerMaps">
+        <div class="selectWrapper">
+
+
+            <h3>Scale:</h3>
+            <select class="Scale">
+        <option onclick="setCookieScale('1')">1</option> 
+        <option onclick="setCookieScale('2')">2</option> 
+        <option onclick="setCookieScale('5')">5</option>
+        <option onclick="setCookieScale('10')">10</option>
+    </select>
+            <h3>Extension:</h3>
+            <select class="Extention">
+        <option onclick="setCookieExtention('1080:720')">1080:720</option>
+        <option onclick="setCookieExtention('1280:760')">1280:800</option>
+        <option onclick="setCookieExtention('1920:1200')">1920:1200</option>
+    </select>
         </div>
-        <div class="Block1">
-        </div>s
+        <div id="wrapper">
+            <canvas id="cl"> </canvas>
+            <canvas id="canv"> </canvas>
+        </div>
+
     </div>
+    <button>CREATE NEW MAP</button>
 
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - Object_B - <a href="../User/Privacy.html">Privacy</a>
-        </div>
-    </footer>
     <script src="../../lib/jquery/dist/jquery.min.js"></script>
     <script src="../../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="NewCreateMap.js"></script>
 
-    <script src="../Localization/LocVariablesViewForAdmin.js"></script>
 </body>
 
 </html>

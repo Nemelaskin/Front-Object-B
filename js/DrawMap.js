@@ -1,8 +1,9 @@
 ﻿let canvas = document.getElementById('cl');
 let ctx = canvas.getContext('2d');
 
-var w = 52 * 20;
-var h = 20 * 30;
+var w = 52 * 20; //1040
+var h = 20 * 30; //600
+
 canvas.style.width = w + "px";
 canvas.style.height = h + "px";
 

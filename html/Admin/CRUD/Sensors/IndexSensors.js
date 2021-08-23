@@ -28,6 +28,7 @@ function CreateTableForIndex(parent, json) {
         let td2 = document.createElement('td');
         let td3 = document.createElement('td');
         let td4 = document.createElement('td');
+        let td5 = document.createElement('td');
         let tdForLink = document.createElement('td');
         let a1 = document.createElement('a');
         let a2 = document.createElement('a');
@@ -54,12 +55,14 @@ function CreateTableForIndex(parent, json) {
         td1.innerText = json[i].sensorId;
         td2.innerText = json[i].nameSensor;
         td3.innerText = json[i].userId;
-        td4.innerText = json[i].coordinates;
+        td4.innerText = json[i].x;
+        td5.innerText = json[i].y;
 
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);
         tr.appendChild(td4);
+        tr.appendChild(td5);
         tr.appendChild(tdForLink);
         parent.appendChild(tr);
     }

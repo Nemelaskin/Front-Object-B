@@ -67,7 +67,7 @@
     postData(newRoom);
 
     async function postData(newRoom) {
-        let actualRoom;
+        let actualRoom = 0;
         tempAllRooms = await queryForRooms();
         tempCompies = await queryForCompanies();
         let compId = "";

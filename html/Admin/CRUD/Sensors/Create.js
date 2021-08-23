@@ -1,7 +1,8 @@
 async function CreateNewSensor() {
-    _user = document.getElementById('dropdownMenuButton').innerText;
-    _NameSensor = document.getElementById('NameSensor').value;
-    _Coordinates = document.getElementById('Coordinates').value;
+    let _user = document.getElementById('dropdownMenuButton').innerText;
+    let _NameSensor = document.getElementById('NameSensor').value;
+    let _X = document.getElementById('X').value;
+    let _Y = document.getElementById('Y').value;
 
     users = await queryForUsers();
 
@@ -14,13 +15,10 @@ async function CreateNewSensor() {
     var data = {
         NameSensor: _NameSensor,
         UserId: userId,
-        Coordinates: _Coordinates
+        X: _X,
+        Y: _Y
     };
-    console.log(_NameSensor);
-    console.log(userId);
-    console.log(_Coordinates);
 
-    console.log(JSON.stringify(data));
     response = await apiFetch('Sensors', {
         method: 'POST',
         headers: {

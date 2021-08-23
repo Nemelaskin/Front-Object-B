@@ -10,7 +10,7 @@ async function CreateNews() {
     let AllNews = (await response.json());
 
     console.log(AllNews);
-    NewsBlock = document.getElementById("NewsBlock");
+    let NewsBlock = document.getElementById("NewsBlock");
     for (let i = 0; i < AllNews.length; i++) {
         h2 = document.createElement('h2');
         lineBreak = document.createElement('br');
